@@ -7,35 +7,44 @@ import net.thucydides.core.annotations.Step;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class PinbusSteps {
     PinbusPage pinbusPage;
-    @Step
+    private static String[] datos;
 
-    //lectura de datos
-
-    public void busqueda(int id) throws IOException {
-        pinbusPage.open();
-
-        String CSV_file = "src/test/resources/Datadriven/pinbus.csv";
-        FileReader filereader = new FileReader(CSV_file);
+    public static void leerCSV(String casoPrueba){
         CSVReader reader;
-        reader = new CSVReader(filereader);
-        String[] cell = reader.readNext();
-        while ((cell = reader.readNext()) != null) {
-            if (id == Integer.parseInt(cell[0])) {
-                pinbusPage.lugaresyfechas(cell[1],cell[2],cell[3],cell[4],cell[5],cell[6]);
-            }
-        }reader.close();
+        try {
+            reader = new CSVReader(new FileReader("src/test/resources/Datadriven/pinbus.csv"));
+            String[] fila;
+            while ((fila = reader.readNext())!=null){
+                Logger.getLogger(fila[0]);
+                if (casoPrueba.equals(fila[0].trim())){
+                    datos = fila;                }
+            }reader.close();
+        } catch (IOException e){
+            Logger.getLogger(""+e);
+        }
     }
 
+    @Step
+    public void lectura(String idCaso) {
+        leerCSV(idCaso);    }
+
+    @Step
+    public void busqueda(){
+        pinbusPage.open();
+        pinbusPage.lugaresyfechas(datos[1],datos[2],datos[3],datos[4],datos[5],datos[6]);
+    }
 
     public void filtros() {
-        pinbusPage.filtros();
+        pinbusPage.filtros(datos[7]);
     }
 
     public void infoPasajero() {
-
-        pinbusPage.infoPasajero();
+        pinbusPage.infoPasajero(datos[8],datos[9],datos[10],datos[11],datos[12],datos[13],datos[14]);
     }
+
+
 }

@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Pinbus" skipped="0" tests="1" time="53.55" timestamp="2019-09-25T10:15:53.080-05:00[America/Bogota]"><testcase name="validar la compra de viaje medellin-puerto berrio ida y vuelta, sillas y bus expreso"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Pinbus" skipped="0" tests="1" time="12.37" timestamp="2019-09-25T14:29:52.769-05:00[America/Bogota]"><testcase name="validar la compra de viaje medellin-puerto berrio ida y vuelta, sillas y bus expreso"><error type="java.lang.NullPointerException"/><system-err>null&#13;
+com.choucair.formacion.steps.PinbusSteps.busqueda(PinbusSteps.java:38)&#13;
+com.choucair.formacion.definition.pinbusDefinition.ingreso_a_pinbus_y_realizo_la_busqueda_de_acuerdo_a_las_especificaciones(pinbusDefinition.java:21)&#13;
+✽.Given ingreso a pinbus y realizo la busqueda de acuerdo a las especificaciones 1(src/test/resources/features/pinbus.feature:3)&#13;
+</system-err></testcase></testsuite>

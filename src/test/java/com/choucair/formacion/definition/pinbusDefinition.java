@@ -12,15 +12,17 @@ import java.io.IOException;
 public class pinbusDefinition {
     @Steps
     PinbusSteps pinbusSteps;
+    String casoPrueba;
 
-    @Given("^ingreso a pinbus y realizo la busqueda de acuerdo a las especificaciones (\\d+)$")
-    public void ingreso_a_pinbus_y_realizo_la_busqueda_de_acuerdo_a_las_especificaciones(int id) throws IOException {
-        pinbusSteps.busqueda(id);    }
+    @Given("^ingreso a pinbus y realizo la busqueda de acuerdo a las especificaciones \"([^\"]*)\"$")
+    public void ingreso_a_pinbus_y_realizo_la_busqueda_de_acuerdo_a_las_especificaciones(String idCaso) throws IOException {
+        this.casoPrueba = idCaso;
+        pinbusSteps.lectura("1");
+        pinbusSteps.busqueda();    }
 
     @When("^filtro por requerimientos$")
     public void filtro_por_requerimientos()  {
         pinbusSteps.filtros();
-
     }
 
     @Then("^coloco la informacion de pasajero$")

@@ -5,24 +5,12 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.yecht.Data;
-
-import java.util.NoSuchElementException;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
-
 
 @DefaultUrl("https://tiquetes.pinbus.com/")
 //@DefaultUrl("https://tiquetes.pinbus.com/pagos/2753210")
 public class PinbusPage extends PageObject {
-
 
     @FindBy(xpath = "//button[@analytics-event='busqueda-pinbus']")
     WebElementFacade btnBuscar;
@@ -65,21 +53,32 @@ public class PinbusPage extends PageObject {
     }
 
     public void filtros(String silla) {
+            /*con webelemntfecade
+            waitforPageLoad
+            * wairforrendered...
+            * waitfor----shout contains text
+            * wait for----- shout be visible
+            *       */
 
+            //waitFor("//button[@analytics-event='busqueda-pinbus']").shouldBeDisplayed();
+            //waitForPresenceOf("//button[@analytics-event='busqueda-pinbus']");
+            //waitForAnyRenderedElementOf(By.xpath("//button[@analytics-event='busqueda-pinbus']"));
+            //waitFor(btnBuscar).shouldBeVisible();
+            //waitForRenderedElementsToBePresent(By.xpath("//button[@analytics-event='busqueda-pinbus']"));
+            //waitFor(btnBuscar).shouldContainText("Buscar");
+
+            WebDriverWait wait = new WebDriverWait(getDriver(), 50);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@analytics-event='busqueda-pinbus']")));
             find(By.xpath("//label[contains(text(),'REY DORADO LO MÁXIMO')]//input")).click();
             find(By.xpath("//button[@class='btn btn-primary' and text()]")).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='seat-number' and text()='35']")));
             find(By.xpath("//span[@class='seat-number' and text()=" + silla + "]")).click();
             find(By.xpath("//a[@class='btn btn-primary btn-block']")).click();
-
     }
 
     public void infoPasajero (String nombre, String apellido, String tipo ,String cc, String fecha, String correo, String tel) {
-
-
-
         find(By.xpath("//div//input[@placeholder='Ingresa tu nombre']")).type(nombre);
         find(By.xpath("//input[@placeholder='Ingresa tu apellido']")).type(apellido);
-        System.out.println(cc);
         find(By.xpath("//select[@name='passengers[0][document_type_id]']//option["+tipo+"]")).click();
         find(By.xpath("//input[@name='passengers[0][document]']")).type(cc);
         find(By.xpath("//input[@placeholder='DD/MM/AAAA']")).type(fecha);

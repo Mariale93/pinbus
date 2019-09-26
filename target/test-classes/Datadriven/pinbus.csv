@@ -1,2 +1,2 @@
-id,origen,destino,mesIda,mesRegreso,diaIda,diaVuelta,sillaIda,nombre,apellido,tipo,cc,fechaNacimiento,correo,tel
-1,Medellin,Puerto Berrio,Noviembre 2019,Nov 2019,1,8,35,mariale,dominguez,2,1017216525,10/10/1993,malejadv93@gmail.com,666
+id,origen,destino,mesIda,mesRegreso,diaIda,diaVuelta,sillaIda,sillaRegreso,nombre,apellido,tipo,cc,fechaNacimiento,correo,tel
+1,Medellin,Puerto Berrio,Noviembre 2019,Nov 2019,1,8,3,7,mariale,dominguez,2,1017216525,10/10/1993,malejadv93@gmail.com,666

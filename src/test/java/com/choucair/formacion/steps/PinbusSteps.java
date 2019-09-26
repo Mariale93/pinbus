@@ -40,10 +40,12 @@ public class PinbusSteps {
 
     public void filtros() {
         pinbusPage.filtros(datos[7]);
+        pinbusPage.filtros2(datos[8]);
     }
 
     public void infoPasajero() {
-        pinbusPage.infoPasajero(datos[8],datos[9],datos[10],datos[11],datos[12],datos[13],datos[14]);
+        pinbusPage.infoPasajero(datos[9],datos[10],datos[11],datos[12],datos[13],datos[14],datos[15]);
+        pinbusPage.validacion();
     }
 
 
